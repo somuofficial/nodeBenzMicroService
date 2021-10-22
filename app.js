@@ -62,16 +62,19 @@ app.post('/api/getRouteInfo',(req, res) =>{
                         if(stations.error === null){
                             var newCharge = (charge.currentChargeLevel)
                             allStations= stations.chargingStations;
-                            allStations.forEach(element => {
-                                newCharge = newCharge + element.limit
-                                if(distance.distance <= newCharge){
+                            for (let i=0; i < allStations.length ; i++){
+                                newCharge = newCharge + allStations[i].limit
+                                if(newCharge >= distance.distance){
                                     global.flag = true;
+                                    global.ind = allStations.indexOf(allStations[i])
+                                    break;
                                 }
                                 else{
                                     global.flag = false;
                                 }
-                            });
+                            }
                             if(flag === true){
+                                
                                 output = { "transactionId": transactionId, 
                                 "vin": charge.vin, 
                                 "source": distance.source, 
@@ -79,7 +82,7 @@ app.post('/api/getRouteInfo',(req, res) =>{
                                 "distance": distance.distance, 
                                 "currentChargeLevel": charge.currentChargeLevel, 
                                 "isChargingRequired": true, 
-                                "chargingStations": stations.chargingStations }
+                                "chargingStations": allStations.slice(0,ind+1) }
                                 return res.json(output);
                             }
                             else
