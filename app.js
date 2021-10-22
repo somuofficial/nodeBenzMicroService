@@ -1,22 +1,21 @@
 const tester = require('./api');
-let transactionId = 1;
 const express = require('express');
 const path = require('path');
 const port = 3000;
 const app = express();
-console.log(__dirname);
+let transactionId = 1;
 
 app.use(express.json());
-app.get('/', (req, res) =>{
-    res.send("Started");
-});
+// endPoint /api/getRouteInfo; input: vin, source, destination
+// this is the main microservice
 app.post('/api/getRouteInfo',(req, res) =>{
     transactionId = ++transactionId;
     length = Object.keys(req.body).length;
     if(length ===3 && "source" in req.body && "destination" in req.body && "vin" in req.body){
+        //find charge details
         charge = tester.getCharge(req.body.vin).then(charge=>{
             if(charge.error === null){
-
+                //find distance details
                 distance = tester.getDistance(req.body.source, req.body.destination).then(distance =>{
                 if(distance.error === null){
                     if(distance.distance <= charge.currentChargeLevel)
@@ -33,6 +32,7 @@ app.post('/api/getRouteInfo',(req, res) =>{
                     }
                     else
                     {
+                        //find all charging stations
                         stations = tester.getStations(req.body.source, req.body.destination).then(stations =>{
                         if(stations.chargingStations === null){
                             if(distance.distance <= charge.currentChargeLevel){
