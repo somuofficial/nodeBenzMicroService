@@ -98,12 +98,6 @@ app.post('/api/getRouteInfo',(req, res) =>{
                         }
                         else{
                             output = { "transactionId": transactionId, 
-                                "vin": charge.vin, 
-                                "source": distance.source, 
-                                "destination": distance.destination, 
-                                "distance": distance.distance, 
-                                "currentChargeLevel": charge.currentChargeLevel, 
-                                "isChargingRequired": false,
                                 "errors": [{ "id": 9999, "description": "Technical Exception" } ] 
                                 }
                                 return res.status(400).json(output);
@@ -113,12 +107,6 @@ app.post('/api/getRouteInfo',(req, res) =>{
                 }
                 else{
                     output = { "transactionId": transactionId, 
-                    "vin": charge.vin, 
-                    "source": distance.source, 
-                    "destination": distance.destination, 
-                    "distance": distance.distance, 
-                    "currentChargeLevel": charge.currentChargeLevel, 
-                    "isChargingRequired": false,
                     "errors": [{ "id": 9999, "description": "Technical Exception" } ] 
                     }
                     return res.status(400).json(output);
@@ -127,12 +115,6 @@ app.post('/api/getRouteInfo',(req, res) =>{
             }
             else{
                 output = { "transactionId": transactionId, 
-                    "vin": charge.vin, 
-                    "source": distance.source, 
-                    "destination": distance.destination, 
-                    "distance": distance.distance, 
-                    "currentChargeLevel": charge.currentChargeLevel, 
-                    "isChargingRequired": false,
                     "errors": [{ "id": 9999, "description": "Technical Exception" } ] 
                     }
                     return res.status(400).json(output);
@@ -141,12 +123,6 @@ app.post('/api/getRouteInfo',(req, res) =>{
     }
     else{
         output = { "transactionId": transactionId, 
-                    "vin": charge.vin, 
-                    "source": distance.source, 
-                    "destination": distance.destination, 
-                    "distance": distance.distance, 
-                    "currentChargeLevel": charge.currentChargeLevel, 
-                    "isChargingRequired": false,
                     "errors": [{ "id": 9999, "description": "Technical Exception" } ] 
                     }
                     return res.status(400).json(output);
