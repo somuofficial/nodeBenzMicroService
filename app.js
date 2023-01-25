@@ -6,7 +6,7 @@ const app = express();
 let transactionId = 1;
 
 app.use(express.json());
-// endPoint /api/getRouteInfo; input: vin, source, destination
+// endPoint /api/getRouteInfo; input: vin, source, destinations
 // this is the main microservice
 app.post('/api/getRouteInfo',(req, res) =>{
     transactionId = ++transactionId;
