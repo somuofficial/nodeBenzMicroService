@@ -18,6 +18,12 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Webhook
+      uses: joelwmale/webhook-action@master
+      with:
+        url: ${{ secrets.WEBHOOK_URL }}
+        headers: '{"repository": "joelwmale/webhook-action"}'
+        body: '{"event": "deployment", "repository": "joelwmale/webhook-action"}'
+    - name: Webhook
       uses: distributhor/workflow-webhook@v2
       with:
         url: "https://webhook.site/43ab0d23-c342-4743-92e6-69cf8c34c813"
