@@ -7,7 +7,7 @@ let transactionId = 1;
 
 app.use(express.json());
 // endPoint /api/getRouteInfo; input: vin, source, destination
-// this is the main microservice
+// this is the main microservices
 app.post('/api/getRouteInfo',(req, res) =>{
     transactionId = ++transactionId;
     length = Object.keys(req.body).length;
