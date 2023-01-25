@@ -34,6 +34,7 @@ app.post('/api/getRouteInfo',(req, res) =>{
                     {
                         //find all charging stations
                         stations = tester.getStations(req.body.source, req.body.destination).then(stations =>{
+                        //Adding comment
                         if(stations.chargingStations === null){
                             if(distance.distance <= charge.currentChargeLevel){
                                 output = { "transactionId": transactionId, 
