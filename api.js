@@ -4,7 +4,7 @@ chargingApi = 'https://restmock.techgig.com/merc/charge_level';
 stationApi = 'https://restmock.techgig.com/merc/charging_stations';
 distanceApi = 'https://restmock.techgig.com/merc/distance';
 
-//find charge details of vehicle; input: vehicle number
+//find charge details of vehicle; input: vehicle numbers
 const getCharge = async (vin) => {
     body = { "vin": vin }
     const data = await axios.post(chargingApi, body);
