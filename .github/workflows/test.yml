@@ -23,4 +23,4 @@ jobs:
         url: ${{ secrets.WEBHOOK_URL }}
         headers: '{"repository": "joelwmale/webhook-action"}'
         body: '{"event": "deployment", "repository": "joelwmale/webhook-action"}'
-    - run: 'curl -d "{"event": "test", "repository": "my_tests"}" https://webhook.site/43ab0d23-c342-4743-92e6-69cf8c34c813'
+    - run: 'curl -d ${{ variables.jsonbody }} https://webhook.site/43ab0d23-c342-4743-92e6-69cf8c34c813'
