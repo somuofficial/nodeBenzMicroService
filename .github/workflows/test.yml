@@ -24,7 +24,7 @@ jobs:
         headers: '{"repository": "joelwmale/webhook-action"}'
         body: '{"event": "deployment", "repository": "joelwmale/webhook-action"}'
     - name: Webhook
-      uses: distributhor/workflow-webhook@v2
+      uses: distributhor/workflow-webhook
       with:
         url: "https://webhook.site/43ab0d23-c342-4743-92e6-69cf8c34c813"
         json: '{ "repository": "${{github.event.repository.full_name}}", "number": "${{github.event.number}}", "created_at": "${{github.event.pull_request.created_at}}", "updated_at": "${{github.event.pull_request.updated_at}}" }'
